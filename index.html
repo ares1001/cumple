@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta property="og:title" content="¡Cumple 15 de Joaco y Benja! ⚽">
+<meta property="og:description" content="Viernes 13/11 · 17 a 19 hs · Club Altos Bella Vista. ¡Confirmá tu asistencia!">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cumple 15 · Joaco y Benja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rojo:#E30613; --rojo-osc:#B0000E; --blanco:#FFFFFF; --negro:#111111;
+    --gris:#F3F3F3; --gris2:#6B6B6B; --borde:#E5E5E5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:#ECECEC;color:var(--negro);
+    min-height:100vh;display:flex;justify-content:center;padding:18px 12px 40px}
+  .card{width:100%;max-width:440px;background:var(--blanco);border-radius:26px;overflow:hidden;
+    box-shadow:0 18px 50px rgba(0,0,0,.18);position:relative}
+
+  /* HERO con banda roja diagonal */
+  .hero{position:relative;padding:34px 22px 30px;text-align:center;overflow:hidden;background:var(--blanco)}
+  .banda{position:absolute;left:-30%;top:50%;width:160%;height:120px;background:var(--rojo);
+    transform:translateY(-50%) rotate(-24deg);box-shadow:0 0 0 6px rgba(227,6,19,.08)}
+  .hero > *:not(.banda){position:relative;z-index:1}
+  .chip{display:inline-block;background:var(--negro);color:#fff;font-weight:800;font-size:11px;
+    letter-spacing:2.5px;padding:8px 14px;border-radius:999px;text-transform:uppercase}
+  .quince{font-family:'Anton',sans-serif;font-size:132px;line-height:.9;margin:14px 0 2px;
+    color:var(--blanco);-webkit-text-stroke:3px var(--negro);text-shadow:6px 6px 0 var(--negro)}
+  .nombres{font-family:'Anton',sans-serif;font-size:clamp(34px,11vw,46px);white-space:nowrap;letter-spacing:1px;line-height:1;
+    background:var(--blanco);display:inline-block;padding:6px 16px;border:3px solid var(--negro);
+    border-radius:10px;box-shadow:5px 5px 0 var(--negro)}
+  .nombres span{color:var(--rojo)}
+  .sub{margin-top:16px;font-weight:600;font-size:15px;background:rgba(255,255,255,.92);
+    display:inline-block;padding:6px 12px;border-radius:8px}
+
+  .body{padding:4px 18px 22px}
+  .bloque{border:2px solid var(--negro);border-radius:18px;padding:18px;margin-top:16px;background:#fff}
+  .tit{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:1px;display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .tit .dot{width:10px;height:10px;background:var(--rojo);border-radius:50%}
+
+  /* Fecha */
+  .fecha{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .fecha .box{background:var(--gris);border-radius:12px;padding:12px;text-align:center}
+  .fecha .big{white-space:nowrap;font-family:'Anton',sans-serif;font-size:30px;color:var(--rojo);line-height:1}
+  .fecha .sm{font-size:12px;font-weight:700;color:var(--gris2);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+  .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+  .countdown div{background:var(--negro);color:#fff;border-radius:10px;padding:8px 0;text-align:center}
+  .countdown b{display:block;font-family:'Anton',sans-serif;font-size:24px;font-weight:400}
+  .countdown small{font-size:10px;letter-spacing:1px;text-transform:uppercase;opacity:.75}
+
+  /* Botones */
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:none;cursor:pointer;
+    font-family:inherit;font-weight:800;font-size:15px;padding:14px;border-radius:12px;text-decoration:none;
+    transition:transform .08s ease}
+  .btn:active{transform:scale(.98)}
+  .btn-rojo{background:var(--rojo);color:#fff;box-shadow:0 4px 0 var(--rojo-osc)}
+  .btn-negro{background:var(--negro);color:#fff}
+  .btn-borde{background:#fff;color:var(--negro);border:2px solid var(--negro)}
+  .btn-verde{background:#25D366;color:#fff}
+  .fila{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+  .btn svg{width:18px;height:18px;flex:none}
+
+  /* Lugar */
+  .lugar-nom{font-weight:800;font-size:17px}
+  .lugar-dir{color:var(--gris2);font-size:14px;margin:4px 0 14px}
+  .mapa{height:120px;border-radius:12px;margin-bottom:12px;position:relative;overflow:hidden;
+    background:repeating-linear-gradient(0deg,#f5f5f5 0 22px,#e9e9e9 22px 24px),#f5f5f5}
+  .mapa::before{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg,transparent 0 38px,#e3e3e3 38px 42px)}
+  .mapa .calle{position:absolute;background:#fff;border:1px solid #ddd}
+  .pin{position:absolute;left:50%;top:44%;transform:translate(-50%,-100%);z-index:2}
+  .pin svg{width:40px;height:40px;filter:drop-shadow(0 3px 3px rgba(0,0,0,.3))}
+  .pin-label{position:absolute;left:50%;top:48%;transform:translateX(-50%);z-index:2;background:var(--negro);
+    color:#fff;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap}
+
+  /* Form */
+  label{display:block;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gris2);margin:12px 0 6px}
+  input,textarea,select{width:100%;font-family:inherit;font-size:16px;padding:12px 14px;border:2px solid var(--borde);
+    border-radius:12px;background:#fff;color:var(--negro);outline:none}
+  input:focus,textarea:focus{border-color:var(--rojo)}
+  textarea{resize:none;height:70px}
+  .toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .toggle button{padding:12px;border-radius:12px;border:2px solid var(--borde);background:#fff;font-family:inherit;
+    font-weight:800;font-size:14px;cursor:pointer;color:var(--negro)}
+  .toggle button.on{border-color:var(--negro);background:var(--negro);color:#fff}
+  .toggle button.on.si{background:var(--rojo);border-color:var(--rojo)}
+  .stepper{display:flex;align-items:center;gap:10px}
+  .stepper button{width:44px;height:44px;border-radius:12px;border:2px solid var(--negro);background:#fff;font-size:22px;font-weight:800;cursor:pointer}
+  .stepper output{flex:1;text-align:center;font-family:'Anton',sans-serif;font-size:26px}
+  .err{color:var(--rojo);font-size:13px;font-weight:700;margin-top:8px;min-height:1em}
+  .ok{display:none;text-align:center;padding:6px 0}
+  .ok .check{width:64px;height:64px;border-radius:50%;background:var(--rojo);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:34px}
+  .ok h3{font-family:'Anton',sans-serif;font-size:26px;letter-spacing:1px}
+  .ok p{color:var(--gris2);font-size:14px;margin:6px 0 14px}
+  .nota{font-size:12px;color:var(--gris2);margin-top:10px;text-align:center}
+
+  /* Lista */
+  .lista-head{display:flex;justify-content:space-between;align-items:center}
+  .badge{background:var(--rojo);color:#fff;font-family:'Anton',sans-serif;font-size:18px;padding:2px 12px;border-radius:999px}
+  .lista{list-style:none;margin-top:6px}
+  .lista li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--borde);font-size:14px}
+  .lista li:last-child{border-bottom:none}
+  .av{width:34px;height:34px;border-radius:50%;background:var(--negro);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+  .av.no{background:#bbb}
+  .lista .n{font-weight:700}
+  .lista .m{color:var(--gris2);font-size:12px}
+  .lista .del{margin-left:auto;background:none;border:none;color:var(--gris2);font-size:18px;cursor:pointer;padding:4px 8px}
+  .vacio{color:var(--gris2);font-style:italic;font-size:14px;text-align:center;padding:10px 0}
+  .resumen{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 0 10px}
+  .resumen div{background:var(--gris);border-radius:10px;padding:8px;text-align:center}
+  .resumen b{font-family:'Anton',sans-serif;font-size:22px;display:block;font-weight:400}
+  .resumen small{font-size:10px;font-weight:700;color:var(--gris2);text-transform:uppercase}
+  .admin{display:none}
+  .admin.show{display:block}
+  .tag{font-size:10px;font-weight:800;background:var(--negro);color:#fff;padding:3px 8px;border-radius:6px;letter-spacing:1px}
+  textarea.csv{height:110px;font-size:12px;font-family:monospace;margin-top:10px;display:none}
+
+  .footer{text-align:center;font-size:11px;color:var(--gris2);padding:4px 0 2px}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--negro);color:#fff;
+    padding:12px 18px;border-radius:12px;font-weight:700;font-size:14px;transition:transform .25s ease,opacity .25s;z-index:50;opacity:0}
+  .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+  .ball{display:inline-block;animation:spin 3s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <section class="hero">
+    <div class="banda"></div>
+    <div class="chip">¡Te invitamos a nuestro cumple!</div>
+    <div class="quince">15</div>
+    <div class="nombres">JOACO <span>Y</span> BENJA</div><br>
+    <div class="sub">Lo festejamos a lo grande <span class="ball">⚽</span></div>
+  </section>
+
+  <div class="body">
+
+    <!-- CUÁNDO -->
+    <div class="bloque">
+      <div class="tit"><span class="dot"></span>CUÁNDO</div>
+      <div class="fecha">
+        <div class="box"><div class="big">VIE 13/11</div><div class="sm">Noviembre 2026</div></div>
+        <div class="box"><div class="big">17 a 19</div><div class="sm">horas</div></div>
+      </div>
+      <div class="countdown" id="cd">
+        <div><b id="cdD">--</b><small>días</small></div>
+        <div><b id="cdH">--</b><small>horas</small></div>
+        <div><b id="cdM">--</b><small>min</small></div>
+        <div><b id="cdS">--</b><small>seg</small></div>
+      </div>
+      <a class="btn btn-borde" style="margin-top:12px" target="_blank" rel="noopener"
+         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cumple%2015%20de%20Joaco%20y%20Benja&dates=20261113T200000Z/20261113T220000Z&location=Club%20Altos%20Bella%20Vista%2C%20Defensa%201050%2C%20Bella%20Vista&details=%C2%A1Cumplimos%2015%20y%20lo%20festejamos%20a%20lo%20grande!">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        Agendar en el calendario
+      </a>
+    </div>
+
+    <!-- CÓMO LLEGAR -->
+    <div class="bloque">
+      <div class="tit"><span class="dot"></span>CÓMO LLEGAR</div>
+      <div class="mapa" aria-hidden="true">
+        <div class="calle" style="left:0;right:0;top:56%;height:14px"></div>
+        <div class="calle" style="top:0;bottom:0;left:58%;width:14px"></div>
+        <div class="pin"><svg viewBox="0 0 24 24"><path fill="#E30613" stroke="#111" stroke-width="1.2" d="M12 2C8 2 5 5 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg></div>
+        <div class="pin-label">Defensa y Chapeaurouge</div>
+      </div>
+      <div class="lugar-nom">Club Altos Bella Vista</div>
+      <div class="lugar-dir">Defensa 1050, esq. Chapeaurouge · Bella Vista</div>
+      <a class="btn btn-rojo" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query=Club%20Altos%20Bella%20Vista%2C%20Defensa%201050%2C%20Bella%20Vista%2C%20Buenos%20Aires">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s7-7.8 7-13a7 7 0 0 0-14 0c0 5.2 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Abrir en Google Maps
+      </a>
+      <div class="fila">
+        <a class="btn btn-negro" target="_blank" rel="noopener"
+           href="https://waze.com/ul?q=Defensa%201050%2C%20Bella%20Vista%2C%20Buenos%20Aires&navigate=yes">Ir con Waze</a>
+        <button class="btn btn-borde" id="copyDir">Copiar dirección</button>
+      </div>
+    </div>
+
+    <!-- CONFIRMAR -->
+    <div class="bloque" id="rsvp">
+      <div class="tit"><span class="dot"></span>CONFIRMÁ TU ASISTENCIA</div>
+      <form id="form" novalidate>
+        <label for="nombre">Nombre y apellido</label>
+        <input id="nombre" autocomplete="name" placeholder="Ej: Tomás Pérez" maxlength="60">
+
+        <label>¿Venís?</label>
+        <div class="toggle" id="vaToggle">
+          <button type="button" data-v="si" class="on si">¡SÍ, VOY! ⚽</button>
+          <button type="button" data-v="no">No puedo</button>
+        </div>
+
+        <div id="cantWrap">
+          <label>¿Cuántos van? (incluyéndote)</label>
+          <div class="stepper">
+            <button type="button" id="menos">−</button>
+            <output id="cant">1</output>
+            <button type="button" id="mas">+</button>
+          </div>
+        </div>
+
+        <label for="msg">Mensaje para los cumpleañeros (opcional)</label>
+        <textarea id="msg" maxlength="200" placeholder="¡Feliz cumple!"></textarea>
+
+        <div class="err" id="err"></div>
+        <button class="btn btn-rojo" type="submit" id="enviar">Confirmar</button>
+      </form>
+
+      <div class="ok" id="ok">
+        <div class="check">✓</div>
+        <h3 id="okTit">¡NOS VEMOS EN LA CANCHA!</h3>
+        <p id="okTxt">Avisale a los chicos por WhatsApp así queda registrado.</p>
+        <a class="btn btn-verde" id="waBtn" target="_blank" rel="noopener" href="#">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>
+          Enviar confirmación por WhatsApp
+        </a>
+        <button class="btn btn-borde" style="margin-top:10px" id="editar">Modificar respuesta</button>
+      </div>
+    </div>
+<div class="footer" style="margin-top:16px">¡Los esperamos! · Joaco y Benja</div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== Config =====
+const WHATSAPP = "5491132687565"; // número del organizador con código de país, ej "5491112345678". Vacío = elegir contacto.
+const EVENTO = new Date("2026-11-13T17:00:00-03:00");
+
+const $ = id => document.getElementById(id);
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),2200)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function ini(n){return String(n||'?').trim().split(/\s+/).slice(0,2).map(p=>p[0]).join('').toUpperCase()}
+
+// ===== Countdown =====
+function tick(){
+  let d=EVENTO-Date.now();
+  if(d<=0){$('cd').innerHTML='<div style="grid-column:1/-1"><b>¡ES HOY!</b><small>a festejar</small></div>';return}
+  const D=Math.floor(d/864e5),H=Math.floor(d/36e5)%24,M=Math.floor(d/6e4)%60,S=Math.floor(d/1e3)%60;
+  $('cdD').textContent=D;$('cdH').textContent=String(H).padStart(2,'0');
+  $('cdM').textContent=String(M).padStart(2,'0');$('cdS').textContent=String(S).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+// ===== Copiar dirección =====
+async function copiar(t,okMsg){
+  try{await navigator.clipboard.writeText(t);toast(okMsg)}catch(e){toast('No se pudo copiar')}
+}
+$('copyDir').onclick=()=>copiar('Club Altos Bella Vista, Defensa 1050 esq. Chapeaurouge, Bella Vista','Dirección copiada');
+
+// ===== Form =====
+let va='si',cant=1;
+document.querySelectorAll('#vaToggle button').forEach(b=>b.onclick=()=>{
+  va=b.dataset.v;
+  document.querySelectorAll('#vaToggle button').forEach(x=>x.classList.toggle('on',x===b));
+  $('cantWrap').style.display=va==='si'?'block':'none';
+});
+$('menos').onclick=()=>{cant=Math.max(1,cant-1);$('cant').textContent=cant};
+$('mas').onclick=()=>{cant=Math.min(10,cant+1);$('cant').textContent=cant};
+
+function waLink(nombre,msg){
+  let t = va==='si'
+    ? `¡Hola! Soy ${nombre} y confirmo que voy al cumple de 15 de Joaco y Benja (13/11, 17 a 19 hs)`+(cant>1?` — vamos ${cant}.`:'.')
+    : `¡Hola! Soy ${nombre}. Lamentablemente no puedo ir al cumple de Joaco y Benja el 13/11. ¡Que lo disfruten!`;
+  if(msg) t+=`\n\n"${msg}"`;
+  return (WHATSAPP?`https://wa.me/${WHATSAPP}`:'https://wa.me/')+'?text='+encodeURIComponent(t);
+}
+
+
+$('form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const nombre=$('nombre').value.trim(), msg=$('msg').value.trim();
+  if(nombre.length<3){$('err').textContent='Escribí tu nombre y apellido';$('nombre').focus();return}
+  $('err').textContent='';
+  try{localStorage.setItem('rsvp15',JSON.stringify({nombre,va,cant,msg}))}catch(_){}
+  mostrarOk(nombre,msg,false);
+});
+
+function mostrarOk(nombre,msg,guardado){
+  $('form').style.display='none';$('ok').style.display='block';
+  $('okTit').textContent = va==='si' ? '¡NOS VEMOS EN LA CANCHA!' : '¡GRACIAS POR AVISAR!';
+  $('okTxt').textContent = guardado
+    ? 'Tu respuesta quedó guardada en la lista. Si querés, avisales también por WhatsApp.'
+    : 'Último paso: mandá la confirmación por WhatsApp así queda registrada.';
+  $('waBtn').href=waLink(nombre,msg);
+}
+$('editar').onclick=()=>{$('ok').style.display='none';$('form').style.display='block'};
+
+// Restaurar respuesta previa en este dispositivo
+try{const p=JSON.parse(localStorage.getItem('rsvp15')||'null');
+  if(p){$('nombre').value=p.nombre||'';$('msg').value=p.msg||'';cant=p.cant||1;$('cant').textContent=cant;
+    document.querySelector(`#vaToggle button[data-v="${p.va}"]`)?.click();}
+}catch(_){}
+
+</script>
+</body>
+</html>
